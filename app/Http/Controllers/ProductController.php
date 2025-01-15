@@ -106,7 +106,22 @@ class ProductController extends Controller
     }
     
 
-    
+    public function delete(Request $request ,$id){
+        $product=Product::find($id);
+        
+        // if($request->hasFile('image')){
+
+        //     if(File::exists(public_path('images').'/'.$product->image)){
+        //         File::delete(public_path('images').'/'.$product->image);
+        //     }
+        // }
+        if(File::exists(public_path('images').'/'.$product->image)){
+            File::delete(public_path('images').'/'.$product->image);
+        }
+        $product->delete();
+        return redirect()->route('products.index')->with('success','Product Delete Successfull !');
+    }
+
 
     
 }
