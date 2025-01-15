@@ -22,7 +22,6 @@
                         </div>
                         <div class="col-md-1 col-lg-1">
                             <button type="submit" class="btn btn-success ">Search</button>
-                            {{-- <a href="{{ route('products.index') }}" class="btn btn-secondary">Reset</a> --}}
                         </div>
                     </div>
                 </form>
@@ -77,7 +76,8 @@
                             <form action="{{ route('products.delete',$product->id) }}" method="POST">
                                 @csrf
                                 @method("DELETE")
-                            
+
+                            <a class="badge text-bg-success" href="{{ route('products.edit',$product->id) }}"><i class="bi bi-pencil-square"> Edit</i></a>
                             <button class="badge text-bg-danger"><i class="bi bi-trash b"></i>Delete</button>
                         </form>
                         </td>

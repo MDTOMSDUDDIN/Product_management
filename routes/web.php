@@ -24,5 +24,6 @@ require __DIR__.'/auth.php';
 route::get('products',[ProductController::class,'index'])->name('products.index');
 route::get('products/create',[ProductController::class,'create'])->name('products.create');
 route::post('products',[ProductController::class,'store'])->name('products.store');
+route::get('product/{id}',[ProductController::class,'edit'])->name('products.edit');
 route::put('products/{id}',[ProductController::class,'update'])->name('products.update');
 route::delete('products/{id}',[ProductController::class,'delete'])->name('products.delete');

@@ -70,7 +70,10 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success','Product Created Successfull !');
     }
 
-   
+    public function edit(Request $request ,$id){
+      $product=Product::find($id);
+      return view('products.edit',compact('product'));
+    }
 
     public function update(Request $request ,$id){
 
@@ -83,7 +86,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $product_id = rand(100000, 999999);
+        $product_id =rand(100000, 999999);
         $filename = $product->image;
         if ($request->hasFile('image')) {
             $filename = time() . '.' . $request->image->extension();
@@ -109,12 +112,6 @@ class ProductController extends Controller
     public function delete(Request $request ,$id){
         $product=Product::find($id);
         
-        // if($request->hasFile('image')){
-
-        //     if(File::exists(public_path('images').'/'.$product->image)){
-        //         File::delete(public_path('images').'/'.$product->image);
-        //     }
-        // }
         if(File::exists(public_path('images').'/'.$product->image)){
             File::delete(public_path('images').'/'.$product->image);
         }
@@ -122,6 +119,4 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success','Product Delete Successfull !');
     }
 
-
-    
 }
