@@ -76,7 +76,7 @@
                             <form action="{{ route('products.delete',$product->id) }}" method="POST">
                                 @csrf
                                 @method("DELETE")
-
+                            <a class="badge text-bg-info" href="{{ route('products.show',$product->id) }}" ><i class="bi bi-folder2-open"> Show</i></a>
                             <a class="badge text-bg-success" href="{{ route('products.edit',$product->id) }}"><i class="bi bi-pencil-square"> Edit</i></a>
                             <button class="badge text-bg-danger"><i class="bi bi-trash b"></i>Delete</button>
                         </form>

@@ -70,6 +70,13 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success','Product Created Successfull !');
     }
 
+    public function show(Request $request,$id){
+        $product=Product::find($id);
+        return view('products.show',compact('product'));
+    }
+
+
+
     public function edit(Request $request ,$id){
       $product=Product::find($id);
       return view('products.edit',compact('product'));
