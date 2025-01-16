@@ -13,15 +13,15 @@
         <div class="card mt-5">
             <div class="card-header text-center"><h4>Product List </h4></div>
             <div class="card-body">
-
+                <a href="{{ route('products.index') }}" class="badge rounded-pill text-bg-light fs-3"><i class="bi bi-arrow-left-circle"></i></a>
                 <form action="{{ route('products.index') }}" method="GET" class="mb-3">
                     @csrf
                     <div class="row">
                         <div class="col-md-10">
                             <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request('search') }}" >
                         </div>
-                        <div class="col-md-1 col-lg-1">
-                            <button type="submit" class="btn btn-success ">Search</button>
+                        <div class="col-md-1 col-lg-2">
+                            <button type="submit" class="btn btn-success "><i class="bi bi-search">Search</i></button>
                         </div>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
                 </thead>
               
                 <tbody>
-                    <a href="{{ route('products.create') }}" class="btn btn-primary col-md-2 offset-md-10 mb-3 text-decoration-none">Add New Product</a>
+                    <a href="{{ route('products.create') }}" class="btn btn-primary col-md-2 offset-md-10 mb-3 text-decoration-none"><i class="bi bi-plus-circle-dotted fs-5"></i> Add New Product</a>
                    @session('success')
                    <div class="alert alert-success">{{ $value }}</div>
                    @endsession
