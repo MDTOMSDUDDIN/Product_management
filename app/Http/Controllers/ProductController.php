@@ -67,7 +67,10 @@ class ProductController extends Controller
             "product_id"=>$product_id,
             
         ]);
-        return redirect()->route('products.index')->with('success','Product Created Successfull !');
+        
+       flash()->success('Product Created Successfull');
+        return redirect()->route('products.index');
+        // return redirect()->route('products.index')->with('success','Product Created Successfull !');
     }
 
     public function show(Request $request,$id){
@@ -111,7 +114,16 @@ class ProductController extends Controller
         $product->image = $filename; 
         
         $product->save();
-        return redirect()->route('products.index')->with('success','Product Update Successfull !');
+
+
+        
+        flash()->options([
+            'timeout' => 3000,
+        ])->success('Product Update Successfull !');
+        return redirect()->route('products.index');
+        // flash()->success('The operation completed successfully.');
+        // return redirect()->route('products.index')->with('success','Product Update Successfull !');
+       
 
     }
     
@@ -123,7 +135,11 @@ class ProductController extends Controller
             File::delete(public_path('images').'/'.$product->image);
         }
         $product->delete();
-        return redirect()->route('products.index')->with('success','Product Delete Successfull !');
+
+        flash()->success('Product Delete Successfull ');
+        return redirect()->route('products.index');
+        // return redirect()->route('products.index')->with('success','Product Delete Successfull !');
+
     }
 
 }
